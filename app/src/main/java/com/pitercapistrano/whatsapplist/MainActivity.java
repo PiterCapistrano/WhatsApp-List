@@ -10,9 +10,16 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pitercapistrano.whatsapplist.adapter.AdapterUsuario;
+import com.pitercapistrano.whatsapplist.model.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recycler_usuario;
+    private List<Usuario> usuarioList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,46 @@ public class MainActivity extends AppCompatActivity {
         // Método para melhorar o desempenho da nossa lista na hora de reciclar
         recycler_usuario.setHasFixedSize(true);
         // Método para criar um adapter da nossa lista
-        //recycler_usuario.setAdapter();
+        AdapterUsuario adapterUsuario = new AdapterUsuario(usuarioList);
+        recycler_usuario.setAdapter(adapterUsuario);
+
+        Usuarios();
+    }
+    public void Usuarios(){
+        Usuario usuario1 = new Usuario(R.drawable.usuario1, "Piter", "Olá como vai?");
+        usuarioList.add(usuario1);
+
+        Usuario usuario2 = new Usuario(R.drawable.usuario2, "Erika", "Olá como vai?");
+        usuarioList.add(usuario2);
+
+        Usuario usuario3 = new Usuario(R.drawable.usuario1, "Jorge", "Vou na sua casa amanhã");
+        usuarioList.add(usuario3);
+
+        Usuario usuario4 = new Usuario(R.drawable.usuario2, "Carla", "Eu estou bem e você?");
+        usuarioList.add(usuario4);
+
+        Usuario usuario5 = new Usuario(R.drawable.usuario1, "Bruno", "Opa");
+        usuarioList.add(usuario5);
+
+        Usuario usuario6 = new Usuario(R.drawable.usuario2, "Kelly", "Tudo bem");
+        usuarioList.add(usuario6);
+
+        Usuario usuario7 = new Usuario(R.drawable.usuario1, "João", "Fecho");
+        usuarioList.add(usuario7);
+
+        Usuario usuario8 = new Usuario(R.drawable.usuario2, "Bia", "Te vejo mais tarde?");
+        usuarioList.add(usuario8);
+
+        Usuario usuario9 = new Usuario(R.drawable.usuario1, "Douglas", "Bora");
+        usuarioList.add(usuario9);
+
+        Usuario usuario10 = new Usuario(R.drawable.usuario2, "Lays", "Até mais tarde");
+        usuarioList.add(usuario10);
+
+        Usuario usuario11 = new Usuario(R.drawable.usuario1, "Fernando", "Ok, tudo bem");
+        usuarioList.add(usuario11);
+
+        Usuario usuario12 = new Usuario(R.drawable.usuario2, "Mariana", "Oi");
+        usuarioList.add(usuario12);
     }
 }
