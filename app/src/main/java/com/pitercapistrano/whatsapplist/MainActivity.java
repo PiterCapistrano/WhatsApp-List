@@ -1,6 +1,9 @@
 package com.pitercapistrano.whatsapplist;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pitercapistrano.whatsapplist.adapter.AdapterUsuario;
 import com.pitercapistrano.whatsapplist.model.Usuario;
+import com.pitercapistrano.whatsapplist.recyclerItemClickListener.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +47,35 @@ public class MainActivity extends AppCompatActivity {
         recycler_usuario.setAdapter(adapterUsuario);
 
         Usuarios();
+
+        // Evento de click na recyclerView
+        recycler_usuario.addOnItemTouchListener(new RecyclerItemClickListener(
+                getApplicationContext(),
+                recycler_usuario,
+                new RecyclerItemClickListener.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Usuario usuario = usuarioList.get(position);
+
+                        Toast.makeText(getApplicationContext(), "Usuário: " + usuario.getNome(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Usuario usuario = usuarioList.get(position);
+
+                        Toast.makeText(getApplicationContext(), "Click longo usuário: " + usuario.getNome(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }
+        ));
     }
     public void Usuarios(){
         Usuario usuario1 = new Usuario(R.drawable.usuario1, "Piter", "Olá como vai?");
